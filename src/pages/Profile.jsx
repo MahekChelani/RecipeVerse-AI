@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function Profile() {
   const { user, token } = useContext(AuthContext);
   const [profileData, setProfileData] = useState(null);
@@ -11,7 +13,7 @@ function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/users/profile");
+        const response = await axios.get(`${API_BASE_URL}/api/users/profile`);
         setProfileData(response.data);
       } catch (err) {
         setError("Failed to load profile. Please try logging in again.");

@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -16,7 +18,7 @@ export const AuthProvider = ({ children }) => {
       
       // Optionally fetch user profile to get user info if not available
       if (!user) {
-        axios.get("http://localhost:5000/api/users/profile")
+        axios.get(`${API_BASE_URL}/api/users/profile`)
           .then(res => {
             setUser(res.data);
           })
