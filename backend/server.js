@@ -14,6 +14,7 @@ import userRoutes from "./routes/userRoutes.js";
 dotenv.config({ path: "./.env" });
 
 const app = express();
+app.set("trust proxy", 1);
 const httpServer = createServer(app);
 
 const PORT = process.env.PORT || 5000;
