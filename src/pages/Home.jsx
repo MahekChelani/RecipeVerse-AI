@@ -11,7 +11,7 @@ function Home() {
     <>
       <Hero onSearch={setSearch} />
       <Recipes search={search} onSearch={setSearch} />
-      <Features />
+      <Features onSearch={setSearch} />
       <FAQ />
     </>
   );
